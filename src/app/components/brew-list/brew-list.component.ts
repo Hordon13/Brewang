@@ -18,6 +18,6 @@ export class BrewListComponent implements OnInit {
 
   ngOnInit() {
     this.breweries$ = this.store.select(fromStore.getBreweries);
+    this.store.dispatch(new fromStore.LoadBreweries());
   }
-
 }
