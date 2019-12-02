@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {BreweryService} from '../../services/brewery.service';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-brew-list',
@@ -10,12 +12,13 @@ export class BrewListComponent implements OnInit {
 
   public breweries = [];
 
-  constructor(private breweryService: BreweryService) {
+  constructor(private store: Store<fromStore.AppState>) {
   }
 
   ngOnInit() {
-    this.breweryService.fetchBreweries()
-      .subscribe(data => this.breweries = data);
+    this.store.subscribe(state => {
+      console.log(state);
+    });
   }
 
 }
