@@ -26,21 +26,20 @@ export function reducer(
       };
     }
 
+    case '[BREW_LIST] Load Breweries Success': {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        data: action.payload
+      };
+    }
+
     case '[BREW_LIST] Load Breweries Fail': {
       return {
         ...state,
         loading: false,
         loaded: false
-      };
-    }
-
-    case '[BREW_LIST] Load Breweries Success': {
-      const data = action.payload;
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        data
       };
     }
   }
