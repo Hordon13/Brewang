@@ -1,3 +1,3 @@
-<div *ngFor="let brewery of breweries">
-  <p>{{brewery.name}}</p>
+<div *ngFor="let brewery of (breweries$ | async)">
+  <a [routerLink]="['/brewery', brewery.id]">{{brewery.name}}</a>
 </div>

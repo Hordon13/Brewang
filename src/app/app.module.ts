@@ -1,11 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 
+import {reducers, effects} from './store';
 import {BreweryService} from './services/brewery.service';
 
 @NgModule({
@@ -17,7 +20,9 @@ import {BreweryService} from './services/brewery.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects)
   ],
   providers: [BreweryService],
   bootstrap: [AppComponent]
