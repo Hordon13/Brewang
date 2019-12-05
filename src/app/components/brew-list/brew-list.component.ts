@@ -9,6 +9,7 @@ import {Brewery} from '../../models/brewery';
   templateUrl: './brew-list.component.html',
   styleUrls: ['./brew-list.component.css']
 })
+
 export class BrewListComponent implements OnInit {
 
   breweries$ = new Observable<Brewery[]>();
@@ -17,7 +18,34 @@ export class BrewListComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (JSON.parse(sessionStorage.getItem('page')) === null) {
+      sessionStorage.setItem('page', `${1}`);
+    }
+    this.pagination('init');
+  }
+
+  pagination(mode) {
+    let page = JSON.parse(sessionStorage.getItem('page'));
+    switch (mode) {
+      case 'increment': {
+        if (page < 805) {
+          sessionStorage.setItem('page', `${++page}`);
+        }
+        break;
+      }
+
+      case 'decrement': {
+        if (page < 805) {
+          sessionStorage.setItem('page', `${--page}`);
+        }
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
+    this.store.dispatch(new fromStore.LoadBreweries(JSON.parse(sessionStorage.getItem('page'))));
     this.breweries$ = this.store.select(fromStore.getBreweries);
-    this.store.dispatch(new fromStore.LoadBreweries());
   }
 }

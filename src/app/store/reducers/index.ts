@@ -12,5 +12,6 @@ export const reducers: ActionReducerMap<AppState> = {
 export const selectBreweries = (state: AppState) => state.breweries;
 
 export const getBreweries = createSelector(selectBreweries, fromBrewery.getBreweries);
+export const getBrewery = createSelector(selectBreweries, fromBrewery.getBrewery);
 export const getBreweryLoaded = createSelector(selectBreweries, fromBrewery.getBreweryLoaded);
 export const getBreweryLoading = createSelector(selectBreweries, fromBrewery.getBreweryLoading);

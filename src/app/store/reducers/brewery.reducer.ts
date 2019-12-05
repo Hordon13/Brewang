@@ -1,32 +1,42 @@
-import * as fromBrewery from '../actions/brewery.actions';
+import * as fromBrewery from '../actions/breweriesActions';
 import {Brewery} from '../../models/brewery';
-import {act} from '@ngrx/effects';
 
 export interface BreweryState {
   data: Brewery[];
+  brewery: Brewery;
   loaded: boolean;
   loading: boolean;
 }
 
 export const initialState = {
   data: [],
+  brewery: null,
   loaded: false,
-  loading: false
+  loading: false,
 };
 
 export function reducer(
   state = initialState,
-  action: fromBrewery.BreweryActions
+  action: fromBrewery.BreweriesActions
 ): BreweryState {
   switch (action.type) {
-    case '[BREW_LIST] Load Breweries': {
+    case fromBrewery.LOAD_BREWERIES: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        loaded: false
       };
     }
 
-    case '[BREW_LIST] Load Breweries Success': {
+    case fromBrewery.LOAD_BREWERY: {
+      return  {
+        ...state,
+        loading: true,
+        loaded: false
+      };
+    }
+
+    case fromBrewery.LOAD_BREWERIES_SUCCESS: {
       return {
         ...state,
         loading: false,
@@ -35,7 +45,16 @@ export function reducer(
       };
     }
 
-    case '[BREW_LIST] Load Breweries Fail': {
+    case fromBrewery.LOAD_BREWERY_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        brewery: action.payload
+      };
+    }
+
+    case fromBrewery.LOAD_BREWERIES_FAIL || fromBrewery.LOAD_BREWERY_FAIL: {
       return {
         ...state,
         loading: false,
@@ -50,3 +69,4 @@ export function reducer(
 export const getBreweryLoading = (state: BreweryState) => state.loading;
 export const getBreweryLoaded = (state: BreweryState) => state.loaded;
 export const getBreweries = (state: BreweryState) => state.data;
+export const getBrewery = (state: BreweryState) => state.brewery;

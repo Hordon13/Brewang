@@ -1,1 +1,19 @@
-<p>brew-detail works!</p>
+<div *ngIf="loaded; else loading">
+  <p>{{brewery.id}}</p>
+  <h4>{{brewery.name}}</h4>
+  <p>{{brewery.brewery_type}}</p>
+  <p>{{brewery.street}}</p>
+  <p>{{brewery.city}}</p>
+  <p>{{brewery.state}}</p>
+  <p>{{brewery.postal_code}}</p>
+  <p>{{brewery.country}}</p>
+  <p>{{brewery.longitude}}</p>
+  <p>{{brewery.latitude}}</p>
+  <p>{{brewery.phone}}</p>
+  <p>{{brewery.website_url}}</p>
+  <p>{{brewery.updated_at}}</p>
+  <p>{{brewery.tag_list}}</p>
+</div>
+<ng-template #loading>
+  <p>loading...</p>
+</ng-template>

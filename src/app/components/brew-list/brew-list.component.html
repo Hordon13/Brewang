@@ -1,3 +1,7 @@
-<div *ngFor="let brewery of (breweries$ | async)">
-  <a [routerLink]="['/brewery', brewery.id]">{{brewery.name}}</a>
+<div>
+  <div *ngFor="let brewery of (breweries$ | async)">
+    <a [routerLink]="['/brewery', brewery.id]">{{brewery.name}}</a>
+  </div>
+  <button (click)="pagination('decrement')">-</button>
+  <button (click)="pagination('increment')">+</button>
 </div>

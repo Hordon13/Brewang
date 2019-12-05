@@ -8,15 +8,20 @@ import {catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BreweryService {
-
-  private url = 'https://api.openbrewerydb.org/breweries?page=300&per_page=10&sort=name';
-
   constructor(private http: HttpClient) {
   }
 
-  fetchBreweries(): Observable<Brewery[]> {
+  fetchBreweries(page): Observable<Brewery[]> {
+    const url = 'https://api.openbrewerydb.org/breweries?page=' + page + '&per_page=10&sort=name';
     return this.http
-      .get<Brewery[]>(this.url)
+      .get<Brewery[]>(url)
+      .pipe(catchError((error: any) => throwError(error.json())));
+  }
+
+  fetchBrewery(id): Observable<Brewery> {
+    const url = 'https://api.openbrewerydb.org/breweries/' + id;
+    return this.http
+      .get<Brewery>(url)
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 }

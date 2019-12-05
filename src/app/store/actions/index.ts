@@ -1,1 +1,1 @@
-export * from './brewery.actions';
+export * from './breweriesActions';

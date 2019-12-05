@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 
 import {Effect, Actions, ofType} from '@ngrx/effects';
-import * as breweryActions from '../actions/brewery.actions';
+import * as breweryActions from '../actions/breweriesActions';
 import * as fromServices from '../../services';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {BreweriesActions} from '../actions';
 
 @Injectable()
 export class BreweryEffects {
@@ -13,13 +14,24 @@ export class BreweryEffects {
   }
 
   @Effect()
-  loadBreweries$ = this.actions$.pipe(ofType('[BREW_LIST] Load Breweries'))
-    .pipe(
-      switchMap(() => {
-        return this.breweryService.fetchBreweries().pipe(
-          map(breweries => new breweryActions.LoadBreweriesSuccess(breweries)),
-          catchError(error => of(new breweryActions.LoadBreweriesFail(error)))
-        );
-      })
-    );
+  loadBreweries$ = this.actions$.pipe(
+    ofType<BreweriesActions>(breweryActions.LOAD_BREWERIES),
+    switchMap((action) => {
+      return this.breweryService.fetchBreweries(action.payload).pipe(
+        map(breweries => new breweryActions.LoadBreweriesSuccess(breweries)),
+        catchError(error => of(new breweryActions.LoadBreweriesFail(error)))
+      );
+    })
+  );
+
+  @Effect()
+  loadBrewery$ = this.actions$.pipe(
+    ofType<BreweriesActions>(breweryActions.LOAD_BREWERY),
+    switchMap((action) => {
+      return this.breweryService.fetchBrewery(action.payload).pipe(
+        map(brewery => new breweryActions.LoadBrewerySuccess(brewery)),
+        catchError(error => of(new breweryActions.LoadBreweryFail(error)))
+      );
+    })
+  );
 }
