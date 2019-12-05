@@ -11,6 +11,8 @@ import {HeaderComponent} from './components/header/header.component';
 
 import {reducers, effects} from './store';
 import {BreweryService} from './services';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {BreweryService} from './services';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot(effects)
+    EffectsModule.forRoot(effects),
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [BreweryService],
   bootstrap: [AppComponent]
