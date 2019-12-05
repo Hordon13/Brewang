@@ -1,4 +1,4 @@
-import * as fromBrewery from '../actions/breweriesActions';
+import * as fromBrewery from '../actions/brewery.action';
 import {Brewery} from '../../models/brewery';
 
 export interface BreweryState {

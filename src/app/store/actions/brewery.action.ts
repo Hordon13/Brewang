@@ -26,14 +26,6 @@ export class LoadBreweriesSuccess implements Action {
   }
 }
 
-export type BreweriesActions =
-  LoadBreweries
-  | LoadBreweriesFail
-  | LoadBreweriesSuccess
-  | LoadBrewery
-  | LoadBreweryFail
-  | LoadBrewerySuccess;
-
 export const LOAD_BREWERY = '[BREW_DETAILS] Load Breweries';
 export const LOAD_BREWERY_FAIL = '[BREW_DETAILS] Load Breweries Fail';
 export const LOAD_BREWERY_SUCCESS = '[BREW_DETAILS] Load Breweries Success';
@@ -58,3 +50,11 @@ export class LoadBrewerySuccess implements Action {
   constructor(public payload: Brewery) {
   }
 }
+
+export type BreweriesActions =
+  LoadBreweries
+  | LoadBreweriesFail
+  | LoadBreweriesSuccess
+  | LoadBrewery
+  | LoadBreweryFail
+  | LoadBrewerySuccess;

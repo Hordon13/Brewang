@@ -1,1 +1,4 @@
-<p>header works!</p>
+<input [(ngModel)]="keyword" type="text" (ngModelChange)="update()">
+<div *ngFor="let match of (matches$ | async)">
+  <a [routerLink]="['/brewery', match.id]" (click)="reset()">{{match.name}}</a>
+</div>

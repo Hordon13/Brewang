@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
 import {Brewery} from '../../models/brewery';
 import * as fromStore from '../../store';
 import {Store} from '@ngrx/store';
@@ -19,7 +18,9 @@ export class BrewDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new fromStore.LoadBrewery(+this.route.snapshot.paramMap.get('id')));
+    this.route.params.subscribe(params => {
+      this.store.dispatch(new fromStore.LoadBrewery(params.id));
+      });
     this.store.select(fromStore.getBrewery).subscribe((state: Brewery) => {
       this.brewery = state;
     });

@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-
 import {Effect, Actions, ofType} from '@ngrx/effects';
-import * as breweryActions from '../actions/breweriesActions';
-import * as fromServices from '../../services';
-
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+
+import * as fromServices from '../../services';
+import * as breweryActions from '../actions/brewery.action';
 import {BreweriesActions} from '../actions';
 
 @Injectable()

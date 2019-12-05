@@ -14,3 +14,8 @@ export interface Brewery {
   updated_at: string;
   tag_list: Array<string>;
 }
+
+export interface ACBrew {
+  id: string;
+  name: string;
+}
