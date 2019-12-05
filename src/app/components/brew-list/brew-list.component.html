@@ -1,6 +1,29 @@
 <div>
-  <div *ngFor="let brewery of (breweries$ | async)">
-    <a [routerLink]="['/brewery', brewery.id]">{{brewery.name}}</a>
+  <div>
+    <table mat-table [dataSource]="(breweries$ | async)" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let brewery"> {{brewery.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let brewery"> {{brewery.brewery_type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let brewery"> {{brewery.city + ', ' + brewery.country}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let brewery"> {{brewery.phone}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </div>
   <button (click)="pagination('decrement')">-</button>
   <button (click)="pagination('increment')">+</button>

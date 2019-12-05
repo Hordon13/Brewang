@@ -1,4 +1,18 @@
-<input [(ngModel)]="keyword" type="text" (ngModelChange)="update()">
-<div *ngFor="let match of (matches$ | async)">
-  <a [routerLink]="['/brewery', match.id]" (click)="reset()">{{match.name}}</a>
-</div>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <h1 [routerLink]="['/breweries']">BREWANG</h1>
+    <span class="spacer"></span>
+    <p>search</p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" [(ngModel)]="keyword" (ngModelChange)="update()" matInput [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let match of (matches$ | async)">
+            <a [routerLink]="['/brewery', match.id]" (click)="reset()">{{match.name}}</a>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </mat-toolbar-row>
+</mat-toolbar>

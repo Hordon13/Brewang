@@ -13,6 +13,7 @@ import {Brewery} from '../../models/brewery';
 export class BrewListComponent implements OnInit {
 
   breweries$ = new Observable<Brewery[]>();
+  displayedColumns: string[] = ['name', 'type', 'location', 'phone'];
 
   constructor(private store: Store<fromStore.AppState>) {
   }

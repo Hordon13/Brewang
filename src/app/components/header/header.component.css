@@ -1,0 +1,36 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.example-form {
+  margin-left: 20px;
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+h1 {
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+p {
+  user-select: none;
+}
