@@ -13,12 +13,14 @@ import {reducers, effects} from './store';
 import {BreweryService} from './services';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material';
+import {PhoneNumberPipe} from './custum.pipes';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    routingComponents
+    routingComponents,
+    PhoneNumberPipe
   ],
   imports: [
     BrowserModule,
