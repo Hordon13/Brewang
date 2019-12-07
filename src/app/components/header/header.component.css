@@ -1,10 +1,16 @@
 .header-container {
-  background: #ebebeb;
+  background: #5263630f;
   box-shadow: 0 4px 10px -2px gray;
+  min-width: 800px;
+}
+
+.mat-toolbar-row {
+  justify-content: center;
 }
 
 .spacer {
   flex: 1 1 auto;
+  max-width: 800px;
 }
 
 .search-field {
@@ -52,4 +58,8 @@ div {
   margin-left: 40px;
   cursor: pointer;
   outline: none;
+}
+
+input {
+  height: 25px;
 }

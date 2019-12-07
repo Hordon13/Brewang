@@ -1,15 +1,30 @@
+.breweries-container {
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  max-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 100px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-width: 1000px;
+  max-width: 1500px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  margin-bottom: 65px;
+}
+
 table {
   width: 100%;
   border-radius: 10px;
   padding: 0 50px;
-}
-
-.breweries-container {
-  padding: 75px 20%;
-}
-
-button {
-  margin: 15px 5px;
 }
 
 a {
@@ -24,8 +39,15 @@ a:link, a:visited {
   color: inherit;
 }
 
-.hidden {
-  visibility: hidden;
+a i {
+  color: #d4d4d4;
+}
+
+.active i {
+  color: #656565;
+}
+
+.inactive {
   pointer-events: none;
   cursor: default;
 }
@@ -48,18 +70,16 @@ th.mat-header-cell:first-of-type, td.mat-cell:first-of-type {
   padding-left: 39px;
 }
 
-#forward:hover, #backward:hover {
+button {
+  margin: 0 50px;
+}
+
+button:hover {
   transform: scale(1.05);
 }
 
-#forward {
-  position: absolute;
-  top: 45%;
-  right: 150px;
-}
-
-#backward {
-  position: absolute;
-  top: 45%;
-  left: 150px;
+@media only screen and (max-width: 1368px) {
+  th.mat-header-cell:last-of-type, td.mat-cell:last-of-type {
+    display: none;
+  }
 }

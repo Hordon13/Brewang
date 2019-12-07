@@ -57,3 +57,11 @@ body {
 .mat-list-item-content {
   justify-content: space-between;
 }
+
+::selection {
+  background: #ffd841;
+}
+
+::-moz-selection {
+  background: #ffd841;
+}
