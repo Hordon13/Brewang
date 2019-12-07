@@ -1,7 +1,7 @@
 .brew-detail-container {
   max-width: 1000px;
   max-height: 600px;
-  margin: 20px auto;
+  margin: 30px auto;
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(10, 1fr);
@@ -9,7 +9,7 @@
 
 .title-wrapper {
   font-size: 45px;
-  line-height: 0.9;
+  line-height: 1;
   font-weight: bold;
   grid-column-start: 2;
   grid-column-end: 10;
@@ -17,6 +17,7 @@
   grid-row-end: 6;
   align-self: flex-end;
   margin-bottom: 50px;
+  user-select: none;
 }
 
 small {
@@ -26,6 +27,7 @@ small {
 
 h2 {
   margin-bottom: 0;
+  padding-bottom: 5px;
 }
 
 .info-type {
@@ -64,7 +66,7 @@ h2 {
   flex-direction: row;
 }
 
-#location-icon, location-icon:link {
+#location-icon {
   margin-left: 5px;
 }
 
@@ -72,4 +74,20 @@ a, a:link, a:visited {
   color: inherit;
   text-decoration: none;
   outline: none;
+}
+
+button {
+  position: absolute;
+  bottom: 80px;
+  right: 150px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+mat-progress-spinner {
+  position: absolute;
+  top: 45%;
+  left: 45%;
 }

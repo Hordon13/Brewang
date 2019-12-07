@@ -1,4 +1,5 @@
 <div *ngIf="loaded; else loading" class="brew-detail-container">
+  <button mat-fab [routerLink]="['/breweries']"><i class="material-icons">chevron_left</i></button>
   <div class="title-wrapper">
     <h2>{{brewery.name}}</h2>
     <small *ngIf="brewery.brewery_type !== ''">
@@ -49,7 +50,6 @@
         <a [href]="'tel:+1' + brewery.phone">{{brewery.phone | phone}}</a>
       </mat-list-item>
 
-
       <mat-list-item *ngIf="brewery.tag_list.length > 0">
         <mat-divider></mat-divider>
         <p class="info-type">Others: </p>
@@ -57,21 +57,6 @@
           <mat-chip>{{tag}}</mat-chip>
         </mat-chip-list>
       </mat-list-item>
-
-
-      <!--
-      <mat-list-item
-        *ngIf="(brewery.longitude !== null && brewery.latitude !== null) || brewery.phone !== '' || brewery.website_url !== ''">
-        <mat-divider></mat-divider>
-        <a *ngIf="brewery.website_url !== ''" [href]="brewery.website_url" target="_blank"><i class="material-icons">
-          public</i></a>
-        <a *ngIf="(brewery.longitude !== null && brewery.latitude !== null)"
-           [href]="'https://www.google.com/maps/search/?api=1&query=' + brewery.latitude + ',' + brewery.longitude"
-           target="_blank"><i class="material-icons">room</i></a>
-        <a *ngIf="brewery.phone !== ''" [href]="'tel:+1' + brewery.phone">
-          <i class="material-icons">local_phone</i></a>
-      </mat-list-item>
-      -->
 
     </mat-list>
   </mat-card>

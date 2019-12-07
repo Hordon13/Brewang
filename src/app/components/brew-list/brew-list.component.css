@@ -1,5 +1,7 @@
 table {
   width: 100%;
+  border-radius: 10px;
+  padding: 0 50px;
 }
 
 .breweries-container {
@@ -8,18 +10,56 @@ table {
 
 button {
   margin: 15px 5px;
-  font-weight: bold;
-}
-
-.mat-header-row {
-  background: aqua;
 }
 
 a {
+  margin-right: 15px;
   text-decoration: none;
   font-weight: bold;
+  user-select: none;
+  outline: none;
 }
 
 a:link, a:visited {
   color: inherit;
+}
+
+.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  cursor: default;
+}
+
+th.mat-header-cell {
+  font-size: 20px;
+  font-weight: bold;
+  color: #607D8B;
+}
+
+.mat-cell {
+  font-size: 16px;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type {
+  padding-left: 39px;
+}
+
+#forward:hover, #backward:hover {
+  transform: scale(1.05);
+}
+
+#forward {
+  position: absolute;
+  top: 45%;
+  right: 150px;
+}
+
+#backward {
+  position: absolute;
+  top: 45%;
+  left: 150px;
 }
