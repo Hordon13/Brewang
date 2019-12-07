@@ -3,6 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
@@ -10,6 +12,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: #f2f2f2;
 }
 
 ul[class],
@@ -40,4 +43,25 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-list-item-content {
+  justify-content: space-between;
+}
+
+::selection {
+  background: #ffd841;
+}
+
+::-moz-selection {
+  background: #ffd841;
 }

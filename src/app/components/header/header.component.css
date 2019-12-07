@@ -1,0 +1,65 @@
+.header-container {
+  background: #5263630f;
+  box-shadow: 0 4px 10px -2px gray;
+  min-width: 800px;
+}
+
+.mat-toolbar-row {
+  justify-content: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  max-width: 800px;
+}
+
+.search-field {
+  margin-left: 20px;
+  margin-right: 40px;
+  min-width: 150px;
+  max-width: 275px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+a, a:link, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 30px;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+p {
+  user-select: none;
+}
+
+img {
+  height: 33px;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-container {
+  margin-left: 40px;
+  cursor: pointer;
+  outline: none;
+}
+
+input {
+  height: 25px;
+}

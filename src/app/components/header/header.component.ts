@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {ACBrew} from '../../models/brewery';
 import {Store} from '@ngrx/store';
 import * as fromStore from '../../store';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   keyword: string;
   matches$ = new Observable<ACBrew[]>();
+  myControl = new FormControl();
 
   constructor(private store: Store<fromStore.AppState>) {
   }

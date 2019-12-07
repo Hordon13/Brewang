@@ -25,6 +25,13 @@ export class BreweryService {
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 
+  getLastBrewery(): Observable<Brewery> {
+    const url = 'https://api.openbrewerydb.org/breweries?per_page=1&sort=-id';
+    return this.http
+      .get<Brewery>(url)
+      .pipe(catchError((error: any) => throwError(error.json())));
+  }
+
   autocomplete(keyword): Observable<ACBrew[]> {
     const url = 'https://api.openbrewerydb.org/breweries/autocomplete?query=' + keyword;
     return this.http

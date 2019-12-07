@@ -1,19 +1,73 @@
-<div *ngIf="loaded; else loading">
-  <p>{{brewery.id}}</p>
-  <h4>{{brewery.name}}</h4>
-  <p>{{brewery.brewery_type}}</p>
-  <p>{{brewery.street}}</p>
-  <p>{{brewery.city}}</p>
-  <p>{{brewery.state}}</p>
-  <p>{{brewery.postal_code}}</p>
-  <p>{{brewery.country}}</p>
-  <p>{{brewery.longitude}}</p>
-  <p>{{brewery.latitude}}</p>
-  <p>{{brewery.phone}}</p>
-  <p>{{brewery.website_url}}</p>
-  <p>{{brewery.updated_at}}</p>
-  <p>{{brewery.tag_list}}</p>
+<div class="breweries-list-container">
+  <div *ngIf="loaded; else loading" class="content-wrapper">
+    <button mat-fab [routerLink]="['/breweries']"><i class="material-icons">chevron_left</i></button>
+    <div class="title-wrapper">
+      <h2>{{brewery.name}}</h2>
+      <small *ngIf="brewery.brewery_type !== ''">
+        {{brewery.brewery_type}}
+      </small>
+    </div>
+    <mat-card class="contact-card">
+      <mat-list>
+        <mat-list-item class="information-row" *ngIf="brewery.street !== ''">
+          <mat-divider></mat-divider>
+          <p class="info-type">Address: </p>
+          <div class="data-wrapper">
+            <p>{{brewery.street}}</p>
+            <a id="location-icon" *ngIf="(brewery.longitude !== null && brewery.latitude !== null)"
+               [href]="'https://www.google.com/maps/search/?api=1&query=' + brewery.latitude + ',' + brewery.longitude"
+               target="_blank"><i class="material-icons">room</i></a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item class="information-row" *ngIf="brewery.postal_code !== null || brewery.city !== null">
+          <mat-divider></mat-divider>
+          <p class="info-type">City: </p>
+          <div class="data-wrapper">
+            <p *ngIf="brewery.city !== null">{{brewery.city + ',&nbsp;'}}</p>
+            <p *ngIf="brewery.postal_code !== null">{{brewery.postal_code}}</p>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item class="information-row" *ngIf="brewery.state !== null || brewery.country !== ''">
+          <mat-divider></mat-divider>
+          <p class="info-type">State: </p>
+          <div class="data-wrapper">
+            <p *ngIf="brewery.state !== null">{{brewery.state + ',&nbsp;' }}</p>
+            <p *ngIf="brewery.country !== ''">{{brewery.country}}</p>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item class="information-row" *ngIf="brewery.website_url !== ''">
+          <mat-divider></mat-divider>
+          <p class="info-type">Website: </p>
+          <a [href]="brewery.website_url" target="_blank">{{brewery.website_url}}</a>
+        </mat-list-item>
+
+        <mat-list-item class="information-row" *ngIf="brewery.phone !== ''">
+          <mat-divider></mat-divider>
+          <p class="info-type">Phone: </p>
+          <a [href]="'tel:+1' + brewery.phone">{{brewery.phone | phone}}</a>
+        </mat-list-item>
+
+        <mat-list-item *ngIf="brewery.tag_list.length > 0">
+          <mat-divider></mat-divider>
+          <p class="info-type">Others: </p>
+          <mat-chip-list *ngFor="let tag of brewery.tag_list">
+            <mat-chip>{{tag}}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card>
+    <p id="update-info">{{'Last updated: ' + (brewery.updated_at | date)}}</p>
+  </div>
 </div>
+
 <ng-template #loading>
-  <p>loading...</p>
+  <mat-progress-spinner
+    class="example-margin"
+    color="accent"
+    mode="indeterminate">
+  </mat-progress-spinner>
 </ng-template>
