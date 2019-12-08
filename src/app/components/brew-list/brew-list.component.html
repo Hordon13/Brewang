@@ -32,25 +32,6 @@
         </td>
       </ng-container>
 
-      <!--
-      <ng-container matColumnDef="contact">
-        <th mat-header-cell *matHeaderCellDef>Contact</th>
-        <td mat-cell *matCellDef="let brewery">
-          <a *ngIf="brewery.phone !== ''; else fake" [href]="'tel:+1' + brewery.phone">
-            <i class="material-icons">local_phone</i></a>
-          <a *ngIf="brewery.website_url !== ''; else fake" [href]="brewery.website_url" target="_blank"><i
-            class="material-icons">
-            public</i></a>
-          <a *ngIf="brewery.longitude !== null && brewery.latitude !== null && brewery.street !== ''; else fake"
-             [href]="'https://www.google.com/maps/search/?api=1&query=' + brewery.latitude + ',' + brewery.longitude"
-             target="_blank"><i class="material-icons">room</i></a>
-          <ng-template #fake>
-            <a href="" class="hidden"><i class="material-icons">apps</i></a>
-          </ng-template>
-        </td>
-      </ng-container>
-      -->
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns" [ngClass]="{tab: true}"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
